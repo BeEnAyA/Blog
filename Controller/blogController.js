@@ -1,11 +1,26 @@
 const db = require("../Model/index");
-const Blog = db.blog;
+const Blogs = db.blog;
 
-exports.index = (req, res) => {
+exports.index=async(req,res)=>{
+    const blogs=await Blogs.findAll();
+    console.log(blogs);
+    res.render('index',{name:'hello'});
+}
 
-    res.render("index");
-};
-
-exports.createblog= async(req,res)=>{
+exports.renderCreateBlog= async(req,res)=>{
     res.render("createblog");
 }
+
+exports.createBlog= async(req,res)=>{
+    const {title,description}=req.body
+    const image=req.file.filename
+
+    await Blogs.create({
+        title:title,
+        description:description,
+        image:image,
+    });
+
+    res.redirect('/')
+}
+

@@ -7,8 +7,12 @@ const app=express()
 const port = 5000;
 
 const db= require("./Model/index");
+
 const blogController= require("./Controller/blogController");
 
+const{storage,multer}=require('./Services/multerConfig')
+
+const upload=multer({storage:storage})
 
 app.set("view engine","ejs");
 
@@ -28,4 +32,6 @@ app.listen(port, () => {
 
   app.get("/", blogController.index);
 
-  app.get("/createblog", blogController.createblog);
+  app.get("/createblog", blogController.renderCreateBlog);
+
+  app.post("/createblog",upload.single('image'),blogController.createBlog)
