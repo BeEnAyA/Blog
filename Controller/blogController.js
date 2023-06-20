@@ -4,7 +4,7 @@ const Blogs = db.blog;
 exports.index=async(req,res)=>{
     const blogs=await Blogs.findAll();
     console.log(blogs);
-    res.render('index',{name:'hello'});
+    res.render('index',{data : blogs});
 }
 
 exports.renderCreateBlog= async(req,res)=>{
@@ -18,7 +18,7 @@ exports.createBlog= async(req,res)=>{
     await Blogs.create({
         title:title,
         description:description,
-        image:image,
+        image: "http://localhost:5000/"+ image,
     });
 
     res.redirect('/')

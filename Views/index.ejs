@@ -27,43 +27,21 @@
 </head>
 <body>
   <div class="container">
+    <!-- <h1><%- 2+3 %></h1> -->
     <div class="row">
-      <div class="col-md-6">
-        <div class="blog-post card">
-          <img class="blog-image card-img-top" src="https://source.unsplash.com/random/900*700/?blog" alt="Image 1">
-          <div class="card-body">
-            <h2 class="blog-title card-title">Sample Blog Post</h2>
-            <p class="blog-description card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus ut lacus pellentesque, non blandit quam consequat.</p>
+      <% data.forEach(blog=>{ %>
+        <div class="col-md-6">
+          <div class="blog-post card">
+            <img class="blog-image card-img-top" src=<%-blog.image%> alt="Image 1">
+            <div class="card-body">
+              <h2 class="blog-title card-title"><%- blog.title%></h2>
+              <p class="blog-description card-text"><%- blog.description%></p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="blog-post card">
-          <img class="blog-image card-img-top" src="https://source.unsplash.com/random/900*700/?travel" alt="Image 1">
-          <div class="card-body">
-            <h2 class="blog-title card-title">Sample Blog Post</h2>
-            <p class="blog-description card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus ut lacus pellentesque, non blandit quam consequat.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="blog-post card">
-          <img class="blog-image card-img-top" src="https://source.unsplash.com/random/900*700/?literature" alt="Image 1">
-          <div class="card-body">
-            <h2 class="blog-title card-title">Sample Blog Post</h2>
-            <p class="blog-description card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus ut lacus pellentesque, non blandit quam consequat.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="blog-post card">
-          <img class="blog-image card-img-top" src="https://source.unsplash.com/random/900*700/?coding" alt="Image 1">
-          <div class="card-body">
-            <h2 class="blog-title card-title">Sample Blog Post</h2>
-            <p class="blog-description card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt purus ut lacus pellentesque, non blandit quam consequat.</p>
-          </div>
-        </div>
-      </div>
+      <% }) %>
+      
+      
     </div>
   </div>
 
