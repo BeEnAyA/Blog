@@ -35,3 +35,9 @@ app.listen(port, () => {
   app.get("/createblog", blogController.renderCreateBlog);
 
   app.post("/createblog",upload.single('image'),blogController.createBlog)
+
+  app.get("/single/:id",blogController.singleBlog)
+
+  app.get("/delete/:id",blogController.deleteBlog)
+
+  app.get("/edit/:id",blogController.editBlog)
