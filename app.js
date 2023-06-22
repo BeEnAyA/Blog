@@ -41,3 +41,5 @@ app.listen(port, () => {
   app.get("/delete/:id",blogController.deleteBlog)
 
   app.get("/edit/:id",blogController.editBlog)
+
+  app.post("/updateblog/:id",upload.single('image'),blogController.updateBlog)
