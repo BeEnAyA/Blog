@@ -42,30 +42,32 @@ exports.deleteBlog = async (req, res) => {
   res.redirect("/");
 };
 
-
-exports.editBlog=async (req,res)=>{
+exports.editBlog = async (req, res) => {
   const blog = await Blogs.findAll({
     where: {
       id: req.params.id,
     },
   });
-    res.render('edit',{blog:blog[0]});
-}
+  res.render("edit", { blog: blog[0] });
+};
 
-exports.updateBlog=async (req,res)=>{
-  console.log(req.body.title)
-  console.log(req.body.imagepath)
-  const image="http://localhost:5000/"+req.file.filename;
-  const blog=await Blogs.update({
-    title:req.body.title,
-    description:req.body.description,
-    image:image
-  },
-  {
-    where:{
-      id:req.params.id,
+exports.updateBlog = async (req, res) => {
+  updatedData = {
+    title: req.body.title,
+    description: req.body.description,
+  };
+
+  //Update image only if new image is selected
+  if (req.file) {
+    const image = "http://localhost:5000/" + req.file.filename;
+    updatedData.image = image;
+  }
+
+  await Blogs.update(updatedData, {
+    where: {
+      id: req.params.id,
     },
-  });
+  })
   console.log("Updated successfully")
   res.redirect("/")
 }
